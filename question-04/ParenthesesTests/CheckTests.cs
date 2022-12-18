@@ -8,6 +8,7 @@ public class CheckTests
     [InlineData("()", true)]
     [InlineData("(", false)]
     [InlineData("()()", false)]
+    [InlineData(")(", false)]
     public void HappyPath(string code, bool expected)
     {
         // Arrange
