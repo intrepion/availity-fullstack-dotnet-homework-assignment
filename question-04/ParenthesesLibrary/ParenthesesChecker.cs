@@ -21,6 +21,10 @@ public class ParenthesesChecker
             else if (code[i] == ')')
             {
                 level -= 1;
+
+                if (level < 0) {
+                    return false;
+                }
             }
         }
 
