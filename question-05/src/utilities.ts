@@ -4,6 +4,10 @@ var utilities = {
             return false;
         }
 
+        if (npiNumber.length > 10) {
+            return false;
+        }
+
         return true;
     }
 }
