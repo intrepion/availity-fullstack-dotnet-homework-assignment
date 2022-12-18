@@ -1,3 +1,5 @@
+using ParenthesesLibrary;
+
 namespace ParenthesesTests;
 
 public class CheckTests
