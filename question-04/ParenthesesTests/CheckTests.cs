@@ -7,6 +7,7 @@ public class CheckTests
     [Theory]
     [InlineData("()", true)]
     [InlineData("(", false)]
+    [InlineData("()()", false)]
     public void HappyPath(string code, bool expected)
     {
         // Arrange
