@@ -1,5 +1,5 @@
 var utilities = {
-  validateNPI: (npiNumber: string) => {
+  validateNpi: (npiNumber: string) => {
     if (npiNumber.length < 10) {
       return false;
     }

@@ -50,7 +50,7 @@ describe("registration", () => {
     cy.get("button#register").click();
     cy.get("span#npiNumberError").should(
       "contain",
-      "Please enter NPI Number."
+      "Please enter valid NPI number."
     );
     cy.get("div#registrationStatus").should("not.exist");
   });
