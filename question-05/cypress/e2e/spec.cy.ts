@@ -9,7 +9,7 @@ describe("registration", () => {
     cy.get("input#firstNameBox").type("John");
     cy.get("button#register").click();
     cy.get("div#registrationStatus h2").should("contain", "Registration Details");
-    cy.get("div#registrationStatus p.firstNameStatus").should("contain", "First Name: John");
+    cy.get("div#registrationStatus p#firstNameStatus").should("contain", "First Name: John");
   });
 
   it("errors when there is a missing first name", () => {

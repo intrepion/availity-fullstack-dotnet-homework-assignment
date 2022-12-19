@@ -3,6 +3,7 @@ import React, { useState } from "react";
 function RegistrationForm() {
     const [firstName, setFirstName] = useState("");
     const [firstNameError, setFirstNameError] = useState("");
+    const [firstNameSubmitted, setFirstNameSubmitted] = useState("");
     const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
     const isEmpty = (value: string) => {
@@ -29,6 +30,7 @@ function RegistrationForm() {
         if (isEmpty(firstName)) {
             setRegistrationSuccess(false);
         } else {
+            setFirstNameSubmitted(firstName);
             setRegistrationSuccess(true);
         }
     }
@@ -37,12 +39,22 @@ function RegistrationForm() {
         <div>
             <h1>Registration</h1>
             <form onSubmit={handleFormSubmit}>
-                <label htmlFor="firstNameBox">First Name: </label>
-                <input type="text" id="firstNameBox" name="firstNameBox" onChange={handleFirstNameChange} value={firstName} />
-                {firstNameError !== "" && <span id="firstNameError">Please enter the first name.</span>}
-                <button id="register">Register</button>
+                <p>
+                    <label htmlFor="firstNameBox">First Name: </label>
+                    <input type="text" id="firstNameBox" name="firstNameBox" onChange={handleFirstNameChange} value={firstName} />
+                </p>
+                <p>
+                    {firstNameError !== "" && <span id="firstNameError">Please enter the first name.</span>}
+                </p>
+                <p>
+                    <button id="register">Register</button>
+                </p>
             </form>
-            {registrationSuccess && <h2 id="registrationStatus">Registration Details</h2>}
+            {registrationSuccess && 
+                <div id="registrationStatus">
+                    <h2>Registration Details</h2>
+                    <p id="firstNameStatus">First Name: {firstNameSubmitted}</p>
+                </div>}
         </div>
     );
 }
