@@ -15,8 +15,8 @@ public class EnrolleeSorter
                     Version = enrollee.Version,
                 };
             })
-            .OrderBy(enrolleeDomain => enrolleeDomain.FirstName)
             .OrderBy(enrolleeDomain => enrolleeDomain.LastName)
+            .ThenBy(enrolleeDomain => enrolleeDomain.FirstName)
             .Select(enrolleeDomain => new Enrollee {
                 Company = enrolleeDomain.Company,
                 Id = enrolleeDomain.Id,
