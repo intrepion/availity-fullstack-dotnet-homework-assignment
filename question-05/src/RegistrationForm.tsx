@@ -11,6 +11,7 @@ function RegistrationForm() {
                 <span id="firstNameError">Please enter the first name.</span>
                 <button id="register">Register</button>
             </form>
+            <h2 id="registrationStatus">Registration Details</h2>
         </div>
     );
 }
