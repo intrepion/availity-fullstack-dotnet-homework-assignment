@@ -11,7 +11,8 @@ public class EnrolleeSorter
                     Company = enrollee.Company,
                     Id = enrollee.Id,
                     FirstName = names[0],
-                    LastName = names[names.Length - 1]
+                    LastName = names[names.Length - 1],
+                    Version = enrollee.Version,
                 };
             })
             .OrderBy(enrolleeDomain => enrolleeDomain.FirstName)
@@ -19,7 +20,8 @@ public class EnrolleeSorter
             .Select(enrolleeDomain => new Enrollee {
                 Company = enrolleeDomain.Company,
                 Id = enrolleeDomain.Id,
-                Name = enrolleeDomain.FirstName + " " + enrolleeDomain.LastName
+                Name = enrolleeDomain.FirstName + " " + enrolleeDomain.LastName,
+                Version = enrolleeDomain.Version,
             })
             .ToList();
     }
