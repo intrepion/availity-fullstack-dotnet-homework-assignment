@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import utilities from "./utilities";
 
 function RegistrationForm() {
-  const [firstName, setFirstName] = useState("");
-  const [firstNameError, setFirstNameError] = useState("");
-  const [firstNameSubmitted, setFirstNameSubmitted] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [lastNameError, setLastNameError] = useState("");
-  const [lastNameSubmitted, setLastNameSubmitted] = useState("");
+  const [firstAndLastName, setFirstAndLastName] = useState("");
+  const [firstAndLastNameError, setFirstAndLastNameError] = useState("");
+  const [firstAndLastNameSubmitted, setFirstAndLastNameSubmitted] = useState("");
   const [npiNumber, setNpiNumber] = useState("");
   const [npiNumberError, setNpiNumberError] = useState("");
   const [npiNumberSubmitted, setNpiNumberSubmitted] = useState("");
@@ -26,19 +23,11 @@ function RegistrationForm() {
     return value === "";
   };
 
-  const validateFirstName = (value: string) => {
+  const validateFirstAndLastName = (value: string) => {
     if (isEmpty(value)) {
-      setFirstNameError("Please enter first name.");
+      setFirstAndLastNameError("Please enter first and last name.");
     } else {
-      setFirstNameError("");
-    }
-  };
-
-  const validateLastName = (value: string) => {
-    if (isEmpty(value)) {
-      setLastNameError("Please enter last name.");
-    } else {
-      setLastNameError("");
+      setFirstAndLastNameError("");
     }
   };
 
@@ -76,18 +65,12 @@ function RegistrationForm() {
     }
   };
 
-  const handleFirstNameChange = (
+  const handleFirstAndLastNameChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     let value = event.target.value;
-    setFirstName(value);
-    validateFirstName(value);
-  };
-
-  const handleLastNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    let value = event.target.value;
-    setLastName(value);
-    validateLastName(value);
+    setFirstAndLastName(value);
+    validateFirstAndLastName(value);
   };
 
   const handleNpiNumberChange = (
@@ -124,19 +107,13 @@ function RegistrationForm() {
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    validateFirstName(firstName);
-    validateLastName(lastName);
+    validateFirstAndLastName(firstAndLastName);
     validateNpiNumber(npiNumber);
     validateBusinessAddress(businessAddress);
     validateTelephoneNumber(telephoneNumber);
     validateEmailAddress(emailAddress);
 
-    if (isEmpty(firstName)) {
-      setRegistrationSuccess(false);
-      return;
-    }
-
-    if (isEmpty(lastName)) {
+    if (isEmpty(firstAndLastName)) {
       setRegistrationSuccess(false);
       return;
     }
@@ -161,8 +138,7 @@ function RegistrationForm() {
       return;
     }
 
-    setFirstNameSubmitted(firstName);
-    setLastNameSubmitted(lastName);
+    setFirstAndLastNameSubmitted(firstAndLastName);
     setNpiNumberSubmitted(npiNumber);
     setBusinessAddressSubmitted(businessAddress);
     setTelephoneNumberSubmitted(telephoneNumber);
@@ -175,32 +151,17 @@ function RegistrationForm() {
       <h1>Registration</h1>
       <form onSubmit={handleFormSubmit}>
         <p>
-          <label htmlFor="firstNameBox">First Name: </label>
+          <label htmlFor="firstAndLastNameBox">First And Last Name: </label>
           <input
             type="text"
-            id="firstNameBox"
-            name="firstNameBox"
-            onChange={handleFirstNameChange}
-            value={firstName}
+            id="firstAndLastNameBox"
+            name="firstAndLastNameBox"
+            onChange={handleFirstAndLastNameChange}
+            value={firstAndLastName}
           />
-          {firstNameError !== "" && (
-            <span className="error" id="firstNameError">
-              {firstNameError}
-            </span>
-          )}
-        </p>
-        <p>
-          <label htmlFor="lastNameBox">Last Name: </label>
-          <input
-            type="text"
-            id="lastNameBox"
-            name="lastNameBox"
-            onChange={handleLastNameChange}
-            value={lastName}
-          />
-          {lastNameError !== "" && (
-            <span className="error" id="lastNameError">
-              {lastNameError}
+          {firstAndLastNameError !== "" && (
+            <span className="error" id="firstAndLastNameError">
+              {firstAndLastNameError}
             </span>
           )}
         </p>
@@ -270,8 +231,7 @@ function RegistrationForm() {
       {registrationSuccess && (
         <div id="registrationStatus">
           <h2>Registration Details</h2>
-          <p id="firstNameStatus">First Name: {firstNameSubmitted}</p>
-          <p id="lastNameStatus">Last Name: {lastNameSubmitted}</p>
+          <p id="firstAndLastNameStatus">First And Last Name: {firstAndLastNameSubmitted}</p>
           <p id="npiNumberStatus">NPI Number: {npiNumberSubmitted}</p>
           <p id="businessAddressStatus">
             Business Address: {businessAddressSubmitted}
