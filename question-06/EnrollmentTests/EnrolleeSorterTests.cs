@@ -12,8 +12,8 @@ public class EnrolleeSorterTests
     {
         var enrollees = new List<Enrollee>
         {
-            new Enrollee { Name = input1 },
-            new Enrollee { Name = input2 }
+            new Enrollee { Company = "Acme", Id = "1", Name = input1 },
+            new Enrollee { Company = "Acme", Id = "2", Name = input2 }
         };
 
         var sorted = EnrolleeSorter.Sort(enrollees);
