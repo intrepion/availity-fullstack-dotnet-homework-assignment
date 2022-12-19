@@ -6,6 +6,8 @@ public class ConversionTests
 {
     [Theory]
     [InlineData("Alice Andrews", "Aaron Bob", "Alice Andrews", "Aaron Bob")]
+    [InlineData("Bob Carol", "Alice Bob", "Alice Bob", "Bob Carol")]
+    [InlineData("James Oliver", "Oliver James", "Oliver James", "James Oliver")]
     public void FirstAndLastNameSortTest(string input1, string input2, string expected1, string expected2)
     {
         var enrollees = new List<Enrollee>
