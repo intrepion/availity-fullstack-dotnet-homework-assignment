@@ -9,7 +9,9 @@ describe("registration", () => {
     cy.get("input#firstNameBox").type("John");
     cy.get("input#lastNameBox").type("Doe");
     cy.get("input#npiNumberBox").type("1234567890");
-    cy.get("input#businessAddressBox").type("123 Main St{enter}Beverly Hills, CA 90210");
+    cy.get("textarea#businessAddressBox").type(
+      "123 Main St{enter}Beverly Hills, CA 90210"
+    );
     cy.get("input#telephoneNumberBox").type("123-456-7890");
     cy.get("input#emailAddressBox").type("some@email.com");
     cy.get("button#register").click();
@@ -43,20 +45,14 @@ describe("registration", () => {
   it("errors when there is a missing first name", () => {
     cy.visit("http://localhost:3000/");
     cy.get("button#register").click();
-    cy.get("span#firstNameError").should(
-      "contain",
-      "Please enter first name."
-    );
+    cy.get("span#firstNameError").should("contain", "Please enter first name.");
     cy.get("div#registrationStatus").should("not.exist");
   });
 
   it("errors when there is a missing last name", () => {
     cy.visit("http://localhost:3000/");
     cy.get("button#register").click();
-    cy.get("span#lastNameError").should(
-      "contain",
-      "Please enter last name."
-    );
+    cy.get("span#lastNameError").should("contain", "Please enter last name.");
     cy.get("div#registrationStatus").should("not.exist");
   });
 
