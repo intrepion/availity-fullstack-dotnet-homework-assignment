@@ -1,3 +1,5 @@
+using EnrollmentLibrary;
+
 namespace EnrollmentTests;
 
 public class ConversionTests
