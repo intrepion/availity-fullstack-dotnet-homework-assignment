@@ -2,7 +2,7 @@ using EnrollmentLibrary;
 
 namespace EnrollmentTests;
 
-public class ConversionTests
+public class EnrolleeSorterTests
 {
     [Theory]
     [InlineData("Alice Andrews", "Aaron Bob", "Alice Andrews", "Aaron Bob")]
