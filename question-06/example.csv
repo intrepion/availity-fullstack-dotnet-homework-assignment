@@ -1,0 +1,8 @@
+UserId,FirstAndLastName,Version,InsuranceCompany
+1,John Doe,1,Acme
+2,Alice Bob,1,Acme
+1,Johnny Doe,2,Acme
+1,Carol Eve,1,Some Company
+2,Chuck Cheese,1,Some Company
+1,Jane Doe,3,Acme
+3,Anne Frank,1,Some Company

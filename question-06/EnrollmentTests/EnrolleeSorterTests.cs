@@ -12,13 +12,24 @@ public class EnrolleeSorterTests
     {
         var enrollees = new List<Enrollee>
         {
-            new Enrollee { Company = "Acme", Id = "1", Name = input1, Version = 1 },
-            new Enrollee { Company = "Acme", Id = "2", Name = input2, Version = 1 }
+            new Enrollee {
+                FirstAndLastName = input1,
+                InsuranceCompany = "Acme",
+                UserId = "1",
+                Version = 1 },
+            new Enrollee {
+                FirstAndLastName = input2,
+                InsuranceCompany = "Acme",
+                UserId = "2",
+                Version = 1
+            }
         };
 
         var sorted = EnrolleeSorter.Sort(enrollees);
+        var actual1 = sorted[0].FirstAndLastName;
+        var actual2 = sorted[1].FirstAndLastName;
 
-        Assert.Equal(expected1, sorted[0].Name);
-        Assert.Equal(expected2, sorted[1].Name);
+        Assert.Equal(expected1, actual1);
+        Assert.Equal(expected2, actual2);
     }
 }

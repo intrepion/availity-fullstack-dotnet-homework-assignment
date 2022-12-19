@@ -8,21 +8,21 @@ public class EnrolleeSeparator
 
         foreach (var enrollee in enrollees)
         {
-            if (!separated.ContainsKey(enrollee.Company))
+            if (!separated.ContainsKey(enrollee.InsuranceCompany))
             {
-                separated.Add(enrollee.Company, new Dictionary<string, Enrollee>());
+                separated.Add(enrollee.InsuranceCompany, new Dictionary<string, Enrollee>());
             }
 
-            if (separated[enrollee.Company].ContainsKey(enrollee.Id))
+            if (separated[enrollee.InsuranceCompany].ContainsKey(enrollee.UserId))
             {
-                if (separated[enrollee.Company][enrollee.Id].Version < enrollee.Version)
+                if (separated[enrollee.InsuranceCompany][enrollee.UserId].Version < enrollee.Version)
                 {
-                    separated[enrollee.Company][enrollee.Id] = enrollee;
+                    separated[enrollee.InsuranceCompany][enrollee.UserId] = enrollee;
                 }
             }
             else
             {
-                separated[enrollee.Company].Add(enrollee.Id, enrollee);
+                separated[enrollee.InsuranceCompany].Add(enrollee.UserId, enrollee);
             }
         }
 

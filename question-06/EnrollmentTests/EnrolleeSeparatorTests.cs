@@ -12,8 +12,18 @@ public class EnrolleeSeparatorTests
     {
         var enrollees = new List<Enrollee>
         {
-            new Enrollee { Company = company1, Id = id1, Version = version1, Name = "Alice Bob" },
-            new Enrollee { Company = company2, Id = id2, Version = version2, Name = "Bob Alice" }
+            new Enrollee {
+                FirstAndLastName = "Alice Bob",
+                InsuranceCompany = company1,
+                UserId = id1,
+                Version = version1,
+            },
+            new Enrollee {
+                FirstAndLastName = "Bob Alice",
+                InsuranceCompany = company2,
+                UserId = id2,
+                Version = version2,
+            }
         };
 
         var separated = EnrolleeSeparator.Separate(enrollees);
