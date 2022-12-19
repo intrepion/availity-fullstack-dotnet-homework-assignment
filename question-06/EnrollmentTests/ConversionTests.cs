@@ -13,5 +13,7 @@ public class ConversionTests
             new Enrollee { Name = input1 },
             new Enrollee { Name = input2 }
         };
+
+        var sorted = EnrolleeSorter.Sort(enrollees);
     }
 }
