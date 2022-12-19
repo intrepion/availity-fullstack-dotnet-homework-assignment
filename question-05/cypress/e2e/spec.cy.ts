@@ -7,6 +7,8 @@ describe("registration", () => {
   it("successfully shows registration details", () => {
     cy.visit("http://localhost:3000/");
     cy.get("input#firstNameBox").type("John");
+    cy.get("button#register").click();
+    cy.get("h2#registrationStatus").should("contain", "Registration Details");
   });
 
   it("errors when there is a missing first name", () => {
