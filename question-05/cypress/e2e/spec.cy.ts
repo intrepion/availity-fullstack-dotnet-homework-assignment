@@ -15,5 +15,6 @@ describe("registration", () => {
     cy.visit("http://localhost:3000/");
     cy.get("button#register").click();
     cy.get("span#firstNameError").should("contain", "Please enter the first name.");
+    cy.get("h2#registrationStatus").should("not.exist");
   });
 });
