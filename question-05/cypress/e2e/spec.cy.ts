@@ -4,6 +4,11 @@ describe("registration", () => {
     cy.get("h1").should("contain", "Registration");
   });
 
+  it("successfully shows registration details", () => {
+    cy.visit("http://localhost:3000/");
+    cy.get("input#firstNameBox").type("John");
+  });
+
   it("errors when there is a missing first name", () => {
     cy.visit("http://localhost:3000/");
     cy.get("button#register").click();
