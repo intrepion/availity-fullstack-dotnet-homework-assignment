@@ -6,8 +6,7 @@ describe("registration", () => {
 
   it("successfully shows registration details", () => {
     cy.visit("http://localhost:3000/");
-    cy.get("input#firstNameBox").type("John");
-    cy.get("input#lastNameBox").type("Doe");
+    cy.get("input#firstAndLastNameBox").type("John Doe");
     cy.get("input#npiNumberBox").type("1234567890");
     cy.get("textarea#businessAddressBox").type(
       "123 Main St{enter}Beverly Hills, CA 90210"
@@ -16,13 +15,9 @@ describe("registration", () => {
     cy.get("input#emailAddressBox").type("some@email.com");
     cy.get("button#register").click();
     cy.get("div#registrationStatus").should("exist");
-    cy.get("div#registrationStatus p#firstNameStatus").should(
+    cy.get("div#registrationStatus p#firstAndLastNameStatus").should(
       "contain",
-      "First Name: John"
-    );
-    cy.get("div#registrationStatus p#lastNameStatus").should(
-      "contain",
-      "Last Name: Doe"
+      "First And Last Name: John Doe"
     );
     cy.get("div#registrationStatus p#npiNumberStatus").should(
       "contain",
@@ -42,17 +37,10 @@ describe("registration", () => {
     );
   });
 
-  it("errors when there is a missing first name", () => {
+  it("errors when there is a missing first and last name", () => {
     cy.visit("http://localhost:3000/");
     cy.get("button#register").click();
-    cy.get("span#firstNameError").should("contain", "Please enter first name.");
-    cy.get("div#registrationStatus").should("not.exist");
-  });
-
-  it("errors when there is a missing last name", () => {
-    cy.visit("http://localhost:3000/");
-    cy.get("button#register").click();
-    cy.get("span#lastNameError").should("contain", "Please enter last name.");
+    cy.get("span#firstAndLastNameError").should("contain", "Please enter first and last name.");
     cy.get("div#registrationStatus").should("not.exist");
   });
 
