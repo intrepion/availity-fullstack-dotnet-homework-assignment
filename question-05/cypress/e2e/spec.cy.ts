@@ -18,4 +18,11 @@ describe("registration", () => {
     cy.get("span#firstNameError").should("contain", "Please enter the first name.");
     cy.get("div#registrationStatus").should("not.exist");
   });
+
+  it("errors when there is a missing last name", () => {
+    cy.visit("http://localhost:3000/");
+    cy.get("button#register").click();
+    cy.get("span#lastNameError").should("contain", "Please enter the last name.");
+    cy.get("div#registrationStatus").should("not.exist");
+  });
 });
